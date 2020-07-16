@@ -50,6 +50,7 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
 
     private static String notificationHubPath = "";
     private static String connectionString = "";
+    private static String tag = "";
 
     /**
      * Gets the application context from cordova's main activity.
@@ -189,6 +190,7 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                     try {
                         notificationHubPath = data.getJSONObject(0).getString(NOTIFICATION_HUB_PATH);
                         connectionString = data.getJSONObject(0).getString(CONNECTION_STRING);
+                        tag = data.getJSONObject(0).getString(TAG_STRING);
 
                         jo = data.getJSONObject(0).getJSONObject(ANDROID);
 
@@ -221,7 +223,7 @@ public class PushPlugin extends CordovaPlugin implements PushConstants {
                             } else if ((storedToken=sharedPref.getString(REGISTRATION_ID, "")) != token) {
                                 NotificationHub hub = new NotificationHub(notificationHubPath, connectionString, getApplicationContext());
 
-                                regId = hub.register(token).getRegistrationId();
+                                regId = hub.register(token, tag).getRegistrationId();
 
                                 editor.putString(AZURE_REG_ID, regId);
                                 editor.putString(REGISTRATION_ID, token);
