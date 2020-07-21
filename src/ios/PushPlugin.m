@@ -70,7 +70,7 @@
         /* azure notification hub connect info */
         self.notificationHubPath = [options objectForKey:@"notificationHubPath"];
         self.connectionString = [options objectForKey:@"connectionString"];
-        NSString *tagString = [options objectForKey:@"tags"];
+        NSString *tagString = [options objectForKey:@"tag"];
         self.tags = [NSSet setWithArray:[tagString componentsSeparatedByString: @","]];
 
         NSMutableDictionary* iosOptions = [options objectForKey:@"ios"];
