@@ -60,7 +60,6 @@
 
 - (void)init:(CDVInvokedUrlCommand*)command;
 {
-    [self initPlugin];
     [self.commandDelegate runInBackground:^ {
 
         NSLog(@"Push Plugin register called");
@@ -206,6 +205,7 @@
          (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 #endif
 
+        [self initPlugin];
         if (notificationMessage) {            // if there is a pending startup notification
             dispatch_async(dispatch_get_main_queue(), ^{
                 // delay to allow JS event handlers to be setup
@@ -536,11 +536,11 @@ static char coldstartKey;
                                               object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(didRegisterForRemoteNotificationsWithDeviceToken:)
-                                                name:@"CAPDidRegisterForRemoteNotificationsWithDeviceToken"
+                                                name:@"didRegisterForRemoteNotificationsWithDeviceToken"
                                               object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(didFailToRegisterForRemoteNotificationsWithError:)
-                                                name:@"CAPDidFailToRegisterForRemoteNotificationsWithDeviceToken"
+                                                name:@"didFailToRegisterForRemoteNotificationsWithDeviceToken"
                                               object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(didReceiveRemoteNotification:)
