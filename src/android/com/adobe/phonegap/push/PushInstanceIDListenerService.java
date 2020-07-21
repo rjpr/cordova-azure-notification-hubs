@@ -16,7 +16,6 @@ import java.io.IOException;
 public class PushInstanceIDListenerService extends FirebaseMessagingService implements PushConstants {
     public static final String LOG_TAG = "Push_InsIdService";
 
-    @Override
     public void onNewToken(String token) {
         // Get updated InstanceID token.
         Log.d(LOG_TAG, "Refreshed token: " + token);
