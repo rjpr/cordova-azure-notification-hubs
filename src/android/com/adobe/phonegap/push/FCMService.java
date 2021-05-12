@@ -23,11 +23,11 @@ import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.RemoteInput;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
 
+import androidx.core.app.RemoteInput;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationCompat.WearableExtender;
 
